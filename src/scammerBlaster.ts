@@ -1,10 +1,13 @@
 import Discord from "discord.js";
-import { BOT_SECRET } from "./config";
+import { BOT_SECRET, MONGO_URI } from "./config";
 import { HandleMessage } from "./controllers/message";
+import { connectToDB } from "./utils/connectToMongo";
 
 const client = new Discord.Client({
   intents: [Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILDS],
 });
+
+connectToDB(MONGO_URI);
 
 client.on("messageCreate", HandleMessage);
 client.on("messageUpdate", (msg) => HandleMessage(msg.reactions.message));
