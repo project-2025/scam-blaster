@@ -1,8 +1,8 @@
-# Scammer Blaster
+# Scam Blaster
 
 https://discord.com/api/oauth2/authorize?client_id=906428626369658911&permissions=73728&scope=bot
 
-A bot that instantly deletes a message containing any banned phrase.
+A bot that instantly deletes a message containing any banned phrase within a discord server that is posted by any user other than an Administrator
 
 ## How to run
 
