@@ -1,22 +1,11 @@
-import Discord from "discord.js";
-import { BANNED_WORDS } from "../config";
-
-/**
- * Check if the message contains one of the banned words
- *
- * @param {string} messageText
- * @param {string[]} spamCollection
- * @returns {boolean}
- */
-
-const checkForSpam = (messageText: string, spamCollection: string[]) => {
-  for (const word of spamCollection) {
-    if (messageText.toLowerCase().includes(word.toLowerCase())) {
-      return true;
-    }
-  }
-  return false;
-};
+import Discord, { Message } from "discord.js";
+import {
+  ADD_WORD_TRIGGER,
+  HELP_TRIGGER,
+  REMOVE_WORD_TRIGGER,
+} from "../constants/triggers";
+import { ServerConfig } from "../schemas/ServerConfig";
+import { checkForSpam } from "./moderate";
 
 /**
  * Handle message creation event
@@ -25,9 +14,19 @@ const checkForSpam = (messageText: string, spamCollection: string[]) => {
  * @returns {void}
  */
 
-const HandleMessage = (msg: Discord.Message) => {
-  if (!msg.member?.permissions.has("ADMINISTRATOR")) {
-    checkForSpam(msg.content, BANNED_WORDS) && msg.delete();
+const HandleMessage = async (msg: Discord.Message) => {
+  const serverConfig = await ServerConfig.findOne({ server: msg.guild?.id });
+  if (serverConfig && !msg.member?.permissions.has("ADMINISTRATOR")) {
+    checkForSpam(msg, serverConfig.words);
+  } else {
+    switch (msg.content.split(" ")[0]) {
+      case ADD_WORD_TRIGGER:
+        return;
+      case REMOVE_WORD_TRIGGER:
+        return;
+      case HELP_TRIGGER:
+        return;
+    }
   }
 };
 
