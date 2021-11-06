@@ -5,6 +5,8 @@ import {
   REMOVE_WORD_TRIGGER,
 } from "../constants/triggers";
 import { ServerConfig } from "../schemas/ServerConfig";
+import { addWord, removeWord } from "./adminControllers";
+import { createHelpEmbed } from "./helpControllers";
 import { checkForSpam } from "./moderate";
 
 /**
@@ -21,11 +23,11 @@ const HandleMessage = async (msg: Discord.Message) => {
   } else {
     switch (msg.content.split(" ")[0]) {
       case ADD_WORD_TRIGGER:
-        return;
+        return addWord(msg);
       case REMOVE_WORD_TRIGGER:
-        return;
+        return removeWord(msg);
       case HELP_TRIGGER:
-        return;
+        return createHelpEmbed(msg);
     }
   }
 };
