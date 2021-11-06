@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://wiki.iota.org">
-    <img src="/scamblasterlogo.png" alt="Logo" width="300" height="120">
+  <a href="https://scamblaster.io">
+    <img src="/scamblasterlogo.png" alt="Logo" width="600" height="400">
   </a>
 
 
