@@ -1,4 +1,9 @@
 import Discord from "discord.js";
+import {
+  ADD_WORD_TRIGGER,
+  REMOVE_WORD_TRIGGER,
+  VIEW_WORDS,
+} from "../constants/triggers";
 import { ServerConfig } from "../schemas/ServerConfig";
 import { embedMessage } from "./adminControllers";
 
@@ -10,13 +15,16 @@ const createHelpEmbed = (msg: Discord.Message) => {
     )
     .setColor("GREEN")
     .setFields([
-      { name: ".blaster-add <word>", value: "Add a word to the banned list" },
       {
-        name: ".blaster-remove <word>",
+        name: `${ADD_WORD_TRIGGER} <word>`,
+        value: "Add a word to the banned list",
+      },
+      {
+        name: `${REMOVE_WORD_TRIGGER} <word>`,
         value: "Remove a word from the banned list",
       },
       {
-        name: ".blaster-words",
+        name: VIEW_WORDS,
         value: "view current list of banned words",
       },
     ]);
