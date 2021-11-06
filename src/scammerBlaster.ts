@@ -1,5 +1,6 @@
 import Discord from "discord.js";
 import { BOT_SECRET, MONGO_URI } from "./config";
+import { HandleServerJoin } from "./controllers/adminControllers";
 import { HandleMessage } from "./controllers/message";
 import { connectToDB } from "./utils/connectToMongo";
 
@@ -11,6 +12,7 @@ connectToDB(MONGO_URI);
 
 client.on("messageCreate", HandleMessage);
 client.on("messageUpdate", (msg) => HandleMessage(msg.reactions.message));
+client.on("guildCreate", HandleServerJoin);
 
 client.on("ready", () => {
   console.log("--> Bot is online");

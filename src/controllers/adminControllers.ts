@@ -68,4 +68,11 @@ const removeWord = async (msg: Discord.Message) => {
   }
 };
 
-export { addWord, removeWord };
+const HandleServerJoin = async (guild: Discord.Guild) => {
+  ServerConfig.create({
+    server: guild.id,
+    words: ["addr1"],
+  });
+};
+
+export { addWord, removeWord, HandleServerJoin };
