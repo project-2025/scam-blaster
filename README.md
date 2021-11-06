@@ -1,4 +1,9 @@
-# Scam Blaster
+<p align="center">
+  <a href="https://wiki.iota.org">
+    <img src="/scamblasterlogo.png" alt="Logo" width="300" height="120">
+  </a>
+
+
 
 https://discord.com/api/oauth2/authorize?client_id=906428626369658911&permissions=73728&scope=bot
 
