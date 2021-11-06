@@ -3,10 +3,11 @@ import {
   ADD_WORD_TRIGGER,
   HELP_TRIGGER,
   REMOVE_WORD_TRIGGER,
+  VIEW_WORDS,
 } from "../constants/triggers";
 import { ServerConfig } from "../schemas/ServerConfig";
 import { addWord, removeWord } from "./adminControllers";
-import { createHelpEmbed } from "./helpControllers";
+import { createHelpEmbed, viewWords } from "./helpControllers";
 import { checkForSpam } from "./moderate";
 
 /**
@@ -26,6 +27,8 @@ const HandleMessage = async (msg: Discord.Message) => {
         return addWord(msg);
       case REMOVE_WORD_TRIGGER:
         return removeWord(msg);
+      case VIEW_WORDS:
+        return viewWords(msg);
       case HELP_TRIGGER:
         return createHelpEmbed(msg);
     }

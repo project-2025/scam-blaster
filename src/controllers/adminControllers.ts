@@ -1,7 +1,7 @@
 import Discord from "discord.js";
 import { ServerConfig } from "../schemas/ServerConfig";
 
-const embedMessage = (content: string, success: boolean = true) => {
+export const embedMessage = (content: string, success: boolean = true) => {
   return new Discord.MessageEmbed()
     .setTitle(success ? "Success" : "Error")
     .setColor(success ? "GREEN" : "RED")
