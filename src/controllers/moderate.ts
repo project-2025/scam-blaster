@@ -39,7 +39,7 @@ const checkForSpam = (msg: Discord.Message, words: string[]) => {
     const embed = new Discord.MessageEmbed()
       .setTitle("Removed Message")
       .setDescription(
-        `removed message from ${msg.author.username}#${msg.author.discriminator}`
+        `${msg.author.username}#${msg.author.discriminator} Scam-Blaster zapped your message because it contained unauthorised content! Are you a Scammer?`
       )
       .setColor("RED");
     msg.channel.send({ embeds: [embed] });
